@@ -93,7 +93,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
-  setTimer1(50); // Chia 10
+  setTimer1(500);
+  setTimer2(1000);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
@@ -118,8 +119,14 @@ int main(void)
 				  break;
 		  }
 		  // set timer for the next time
-		  setTimer1(50); //Chia 10
+		  setTimer1(500);
 	  }
+
+	  if (timer2_flag == 1) {
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		  setTimer2(1000);
+	  }
+
   }
   /* USER CODE END 3 */
 }
